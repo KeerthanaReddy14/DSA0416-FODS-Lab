@@ -1,0 +1,8 @@
+import numpy as np
+days_in_month = np.array([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31])
+
+days_between_months = np.diff(days_in_month)
+
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+for i, month in enumerate(months[:-1]):
+    print(f"Number of days between {month} and {months[i+1]}: {days_between_months[i]}")
