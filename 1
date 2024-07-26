@@ -1,0 +1,11 @@
+import pandas as pd
+df = pd.read_csv('orders.csv')
+print("First few rows of the data frame:")
+print(df.head())
+total_sales = df['Total Price'].sum()
+print("\nTotal sales:", total_sales)
+average_quantity = df['Quantity'].mean()
+print("\nAverage quantity of products ordered:", average_quantity)
+top_selling_products = df.groupby('Product ID')['Quantity'].sum().sort_values(ascending=False)
+print("\nTop-selling products based on quantity:")
+print(top_selling_products.head())
