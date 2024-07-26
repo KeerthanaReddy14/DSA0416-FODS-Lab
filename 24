@@ -1,0 +1,12 @@
+import numpy as np
+
+# Sample response times data (in milliseconds)
+response_times = [120, 150, 180, 200, 220, 250, 270, 300, 350, 400]
+
+# Calculate the 25th, 50th, and 75th percentiles
+percentiles = np.percentile(response_times, [25, 50, 75])
+
+# Print the results
+print(f"25th Percentile: {percentiles[0]} ms")
+print(f"50th Percentile (Median): {percentiles[1]} ms")
+print(f"75th Percentile: {percentiles[2]} ms")
