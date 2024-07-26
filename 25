@@ -1,0 +1,12 @@
+import numpy as np
+
+# Sample recovery times data (in days)
+recovery_times = [5, 7, 8, 10, 12, 15, 18, 20, 22, 25, 30, 35, 40, 45, 50]
+
+# Calculate the 10th, 50th, and 90th percentiles
+percentiles = np.percentile(recovery_times, [10, 50, 90])
+
+# Print the results
+print(f"10th Percentile: {percentiles[0]} days")
+print(f"50th Percentile (Median): {percentiles[1]} days")
+print(f"90th Percentile: {percentiles[2]} days")
