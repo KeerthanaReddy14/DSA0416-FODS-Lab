@@ -1,0 +1,25 @@
+import pandas as pd
+data = {
+    'Employee ID': [1, 2, 3, 4, 5, 6],
+    'Department': ['HR', 'IT', 'IT', 'Finance', 'HR', 'Finance'],
+    'Salary': [60000, 70000, 80000, 75000, 62000, 78000],
+    'Joining Date': ['2020-01-15', '2019-05-22', '2021-03-10', '2018-11-02', '2020-07-19', '2019-08-30']
+}
+df = pd.DataFrame(data)
+df['Joining Date'] = pd.to_datetime(df['Joining Date'])
+
+salary_summary = df.groupby('Department')['Salary'].agg(['max', 'min'])
+print("Highest and Lowest Salaries in Each Department:")
+print(salary_summary)
+print()
+
+current_date = pd.to_datetime('today')
+df['Tenure (Years)'] = (current_date - df['Joining Date']).dt.days / 365.25
+average_tenure = df['Tenure (Years)'].mean()
+print(f"Average Tenure of Employees: {average_tenure:.2f} years")
+print()
+
+specific_date = pd.to_datetime('2020-01-01')
+employees_before_date = df[df['Joining Date'] < specific_date]
+print(f"Employees who joined before {specific_date.date()}:")
+print(employees_before_date[['Employee ID', 'Department', 'Joining Date']])
