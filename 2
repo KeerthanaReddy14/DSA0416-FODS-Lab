@@ -1,0 +1,15 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'Smoking': [20, 15, 5, 25, 30, 10, 18, 22, 8, 12],
+    'LungCancer': [5, 4, 1, 6, 8, 2, 3, 7, 1, 2]
+}
+df = pd.DataFrame(data)
+correlation_coefficient = df['Smoking'].corr(df['LungCancer'])
+print("Correlation coefficient between smoking and lung cancer rates:", correlation_coefficient)
+plt.scatter(df['Smoking'], df['LungCancer'], color='blue')
+plt.title('Scatter Plot of Smoking vs Lung Cancer Rates')
+plt.xlabel('Smoking (cigarettes per day)')
+plt.ylabel('Lung Cancer Incidence')
+plt.grid(True)
+plt.show()
