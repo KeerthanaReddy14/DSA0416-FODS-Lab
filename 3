@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'ProductCategory': ['Electronics', 'Clothing', 'Books', 'Home', 'Toys', 'Sports', 'Beauty', 'Grocery'],
+    'Sales': [12000, 15000, 8000, 13000, 7000, 10000, 9000, 11000]
+}
+df = pd.DataFrame(data)
+plt.figure(figsize=(10, 5))
+plt.plot(df['ProductCategory'], df['Sales'], marker='o', linestyle='-', color='b')
+plt.title('Line Plot of Sales by Product Category')
+plt.xlabel('Product Category')
+plt.ylabel('Sales')
+plt.grid(True)
+plt.show()
+plt.figure(figsize=(10, 5))
+plt.scatter(df['ProductCategory'], df['Sales'], color='r')
+plt.title('Scatter Plot of Sales by Product Category')
+plt.xlabel('Product Category')
+plt.ylabel('Sales')
+plt.grid(True)
+plt.show()
+plt.figure(figsize=(10, 5))
+plt.bar(df['ProductCategory'], df['Sales'], color='g')
+plt.title('Bar Plot of Sales by Product Category')
+plt.xlabel('Product Category')
+plt.ylabel('Sales')
+plt.grid(True)
+plt.show()
