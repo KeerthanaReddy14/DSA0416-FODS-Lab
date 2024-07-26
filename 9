@@ -1,0 +1,24 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'Month': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    'Temperature': [30, 32, 35, 40, 42, 45, 44, 43, 39, 35, 32, 30],
+    'Rainfall': [3.1, 2.8, 3.5, 3.0, 2.5, 3.2, 4.0, 3.8, 3.6, 3.1, 2.9, 3.0]
+}
+df = pd.DataFrame(data)
+plt.figure(figsize=(10, 5))
+plt.plot(df['Month'], df['Temperature'], marker='o', linestyle='-', color='b')
+plt.title('Monthly Temperature Data')
+plt.xlabel('Month')
+plt.ylabel('Temperature (°C)')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.show()
+plt.figure(figsize=(10, 5))
+plt.scatter(df['Month'], df['Rainfall'], color='r')
+plt.title('Monthly Rainfall Data')
+plt.xlabel('Month')
+plt.ylabel('Rainfall (inches)')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.show()
