@@ -1,0 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'OrderID': ['OrderID_20230101', 'OrderID_20230102', 'OrderID_20230103', 'OrderID_20230104'],
+    'CustomerID': [101, 102, 101, 103],
+    'ProductID': [501, 502, 503, 504],
+    'Quantity': [2, 1, 3, 4],
+    'TotalPrice': [50.00, 30.00, 90.00, 120.00]
+}
+df = pd.DataFrame(data)
+df['Order Date'] = pd.to_datetime(df['OrderID'].str.split('_').str[-1], format='%Y%m%d')
+print("DataFrame with 'Order Date':")
+print(df)
+customer_orders = df[df['CustomerID'] == 101]
+print("\nOrders placed by CustomerID 101:")
+print(customer_orders)
+total_spent_by_customer = df.groupby('CustomerID')['TotalPrice'].sum().reset_index()
+print("\nTotal amount spent by each customer:")
+print(total_spent_by_customer)
+plt.figure(figsize=(10, 6))
+plt.hist(df['TotalPrice'], bins=10, color='blue', edgecolor='black')
+plt.title('Distribution of Total Price')
+plt.xlabel('Total Price')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
