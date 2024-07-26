@@ -1,0 +1,17 @@
+import pandas as pd
+from datetime import datetime, timedelta
+data = {
+    'product_name': ['Product A', 'Product B', 'Product C', 'Product A', 'Product B', 'Product A', 'Product C'],
+    'order_date': ['2024-06-15', '2024-06-18', '2024-06-20', '2024-06-25', '2024-06-30', '2024-07-01', '2024-07-05'],
+    'quantity_sold': [10, 5, 2, 7, 3, 15, 8]
+}
+df = pd.DataFrame(data)
+df['order_date'] = pd.to_datetime(df['order_date'])
+end_date = datetime.now()
+start_date = end_date - timedelta(days=30)
+filtered_df = df[(df['order_date'] >= start_date) & (df['order_date'] <= end_date)]
+sales_summary = filtered_df.groupby('product_name')['quantity_sold'].sum()
+top_products = sales_summary.sort_values(ascending=False)
+top_5_products = top_products.head(5)
+print("Top 5 Products Sold the Most in the Past Month:")
+print(top_5_products)
