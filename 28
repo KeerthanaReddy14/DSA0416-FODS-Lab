@@ -1,0 +1,10 @@
+import numpy as np
+from scipy import stats
+
+purchase_amounts = [23.45, 67.89, 23.45, 89.99, 45.67, 67.89, 23.45, 89.99, 67.89, 23.45, 34.56, 78.90, 67.89]
+
+mean_purchase_amount = np.mean(purchase_amounts)
+print(f"Mean (Average) Purchase Amount: ${mean_purchase_amount:.2f}")
+
+mode_purchase_amount = stats.mode(purchase_amounts)
+print(f"Mode Purchase Amount: ${mode_purchase_amount.mode[0]:.2f} (occurred {mode_purchase_amount.count[0]} times)")
