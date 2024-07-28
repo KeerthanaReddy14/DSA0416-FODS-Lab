@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+
+data = pd.read_csv('daily_temperatures.csv')
+
+temperatures = data['Temperature'].values
+
+variance = np.var(temperatures)
+print(f"Variance of Daily Temperatures: {variance:.2f}")
+
+Q1 = np.percentile(temperatures, 25)
+Q3 = np.percentile(temperatures, 75)
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+outliers = temperatures[(temperatures < lower_bound) | (temperatures > upper_bound)]
+print("\nPotential Outliers:")
+print(outliers)
