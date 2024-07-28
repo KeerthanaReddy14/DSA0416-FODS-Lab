@@ -1,0 +1,14 @@
+import numpy as np
+import pandas as pd
+
+data = pd.read_csv('monthly_expenses.csv')
+
+expenses = data.values
+
+variances = np.var(expenses, axis=0)
+print("Variance of Monthly Expenses for each department:")
+print(variances)
+
+covariance_matrix = np.cov(expenses, rowvar=False)
+print("\nCovariance Matrix of Monthly Expenses:")
+print(covariance_matrix)
