@@ -1,0 +1,11 @@
+import pandas as pd
+import numpy as np
+
+np.random.seed(42)  # For reproducibility
+sample_sales = np.random.randint(100, 200, size=30)
+data = pd.DataFrame(sample_sales, columns=['Sales'])
+
+data.to_csv('daily_sales.csv', index=False)
+
+sales_variance = data['Sales'].var()
+print(f"Variance of Daily Sales: {sales_variance:.2f}")
