@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = pd.DataFrame({
+    'Age': [25, 32, 40, 45, 22, 34, 30, 50, 60, 29, 35, 38],
+    'Salary': [50000, 54000, 60000, 65000, 45000, 52000, 50000, 70000, 80000, 48000, 53000, 58000]
+})
+
+correlation_matrix = data.corr()
+print("Correlation Matrix:")
+print(correlation_matrix)
+
+covariance_matrix = data.cov()
+print("\nCovariance Matrix:")
+print(covariance_matrix)
+
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix Heatmap')
+plt.show()
+
+sns.pairplot(data)
+plt.show()
