@@ -1,0 +1,15 @@
+import pandas as pd
+
+data = pd.DataFrame({
+    'DISEASE_NAME': ['Common Cold', 'Diabetes', 'Bronchitis', 'Influenza', 'Kidney Stones'],
+    'DIAGNOSED_PATIENTS': [320, 120, 100, 150, 60]
+})
+
+frequency_distribution = data.set_index('DISEASE_NAME')['DIAGNOSED_PATIENTS']
+
+most_common_disease = frequency_distribution.idxmax()
+most_common_disease_count = frequency_distribution.max()
+
+print("Frequency Distribution of Diseases:")
+print(frequency_distribution)
+print(f"\nMost Common Disease: {most_common_disease} with {most_common_disease_count} diagnosed patients")
