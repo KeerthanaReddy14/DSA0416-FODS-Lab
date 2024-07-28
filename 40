@@ -1,0 +1,47 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'Date': ['2023-07-01', '2023-07-02', '2023-07-03', '2023-07-04', '2023-07-05', '2023-07-06', '2023-07-07'],
+    'ProductCategory': ['Electronics', 'Clothing', 'Electronics', 'Clothing', 'Home & Kitchen', 'Electronics', 'Clothing'],
+    'SalesAmount': [250, 150, 300, 200, 350, 400, 100],
+    'UnitsSold': [5, 3, 6, 4, 7, 8, 2]
+}
+df = pd.DataFrame(data)
+df['Date'] = pd.to_datetime(df['Date'])
+
+total_sales = df['SalesAmount'].sum()
+print(f"Total Sales: ${total_sales:.2f}")
+
+average_sales = df['SalesAmount'].mean()
+print(f"Average Sales per Day: ${average_sales:.2f}")
+
+total_units_sold = df['UnitsSold'].sum()
+print(f"Total Units Sold: {total_units_sold}")
+
+sales_by_category = df.groupby('ProductCategory')['SalesAmount'].sum()
+print("\nSales by Product Category:")
+print(sales_by_category)
+
+units_sold_by_category = df.groupby('ProductCategory')['UnitsSold'].sum()
+print("\nUnits Sold by Product Category:")
+print(units_sold_by_category)
+
+plt.figure(figsize=(10, 5))
+plt.plot(df['Date'], df['SalesAmount'], marker='o')
+plt.title('Daily Sales Amount')
+plt.xlabel('Date')
+plt.ylabel('Sales Amount')
+plt.grid(True)
+plt.show()
+
+sales_by_category.plot(kind='bar', figsize=(10, 5))
+plt.title('Sales by Product Category')
+plt.xlabel('Product Category')
+plt.ylabel('Sales Amount')
+plt.show()
+
+units_sold_by_category.plot(kind='bar', figsize=(10, 5), color='orange')
+plt.title('Units Sold by Product Category')
+plt.xlabel('Product Category')
+plt.ylabel('Units Sold')
+plt.show()
