@@ -1,0 +1,21 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+data = {
+    'TrafficCongestion': [70, 80, 60, 85, 90, 75, 78, 82, 65, 68],
+    'AirPollutionLevel': [55, 60, 50, 65, 70, 58, 62, 67, 48, 52]
+}
+
+df = pd.DataFrame(data)
+
+correlation_coefficient = np.corrcoef(df['TrafficCongestion'], df['AirPollutionLevel'])[0, 1]
+print(f"Correlation Coefficient between Traffic Congestion and Air Pollution Level: {correlation_coefficient:.2f}")
+
+plt.scatter(df['TrafficCongestion'], df['AirPollutionLevel'], color='blue')
+plt.title('Traffic Congestion vs Air Pollution Level')
+plt.xlabel('Traffic Congestion')
+plt.ylabel('Air Pollution Level')
+plt.grid(True)
+plt.show()
